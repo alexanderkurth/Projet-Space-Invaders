@@ -25,15 +25,15 @@ public class Vaisseau {
 	}
 
 	private boolean estOrdonneeCouverte(int y) {
-		return (ordonneeLaPlusBasse()<=y) && (y<=ordonneLaPlusHaute());
+		return (ordonneeLaPlusHaute()<=y) && (y<=ordonneLaPlusBasse());
 	}
 
-	private int ordonneLaPlusHaute() {
+	private int ordonneLaPlusBasse() {
 		return this.y;
 	}
 
-	private int ordonneeLaPlusBasse() {
-		return ordonneLaPlusHaute()-this.hauteur+1;
+	private int ordonneeLaPlusHaute() {
+		return ordonneLaPlusBasse()-this.hauteur+1;
 	}
 
 	private boolean estAbscisseCouverte(int x) {
