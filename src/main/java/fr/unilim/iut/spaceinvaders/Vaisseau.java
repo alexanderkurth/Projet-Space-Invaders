@@ -1,66 +1,65 @@
 package fr.unilim.iut.spaceinvaders;
 
 public class Vaisseau {
-	Position origine;
-	int longueur;
-	int hauteur;
+	private Position origine;
+    private Dimension dimension;
 
-	public Vaisseau(int longueur, int hauteur, int x, int y) {
-		this.longueur = longueur;
-		this.hauteur = hauteur;
-		this.origine = new Position(x,y);
-	}
-	
-	public Vaisseau(int longueur, int hauteur) {
-		this(longueur, hauteur, 0, 0);
-	}
+    public Vaisseau(int longueur, int hauteur) {
+	    this(longueur, hauteur, 0, 0);
+    }
 
-	public boolean occupeLaPosition(int x, int y) {
-		if (estAbscisseCouverte(x) && estOrdonneeCouverte(y))
-			return true;
-		
-	     return false;
-	}
+    public Vaisseau(int longueur, int hauteur, int x, int y) {
+	   this(new Dimension(longueur, hauteur), new Position(x, y));
+    }
 
-	private boolean estOrdonneeCouverte(int y) {
-		return (ordonneeLaPlusHaute()<=y) && (y<=ordonneLaPlusBasse());
-	}
+    public Vaisseau(Dimension dimension, Position positionOrigine) {
+	    this.dimension = dimension;
+	    this.origine = positionOrigine;
+    }
 
-	private int ordonneLaPlusBasse() {
-		return this.origine.ordonnee();
-	}
+    public boolean occupeLaPosition(int x, int y) {
+    	return estAbscisseCouverte(x) && estOrdonneeCouverte(y);
+    }
 
-	private int ordonneeLaPlusHaute() {
-		return ordonneLaPlusBasse()-this.hauteur+1;
-	}
+    private boolean estOrdonneeCouverte(int y) {
+    	return (ordonneeLaPlusBasse() <= y) && (y <= ordonneeLaPlusHaute());
+    }
 
-	private boolean estAbscisseCouverte(int x) {
-		return (abscisseLaPlusAGauche()<=x) && (x<=abscisseLaPlusADroite());
-	}
+    private boolean estAbscisseCouverte(int x) {
+    	return (abscisseLaPlusAGauche() <= x) && (x <= abscisseLaPlusADroite());
+    }
 
-	private int abscisseLaPlusAGauche() {
-		return this.origine.abscisse();
-	}
+    private int ordonneeLaPlusBasse() {
+	    return this.origine.ordonnee() - this.dimension.hauteur() + 1;
+    }
 
-	public int abscisseLaPlusADroite() {
-		return abscisseLaPlusAGauche()+this.longueur-1;
-	}
+    private int ordonneeLaPlusHaute() {
+    	return this.origine.ordonnee();
+    }
 
-	public void seDeplacerVersLaDroite() {
-		this.origine.changerAbscisse(this.origine.abscisse()+1);
-	}
+    public int abscisseLaPlusADroite() {
+    	return this.origine.abscisse() + this.dimension.longueur() - 1;
+    }
+
+    public int abscisseLaPlusAGauche() {
+	   	return this.origine.abscisse();
+    }
+
+    public void seDeplacerVersLaDroite() {
+	   	this.origine.changerAbscisse(this.origine.abscisse() + 1);
+    }
+
+    public void seDeplacerVersLaGauche() {
+	   	this.origine.changerAbscisse(this.origine.abscisse() - 1);
+    }
+
+    public void positionner(int x, int y) {
+	   	this.origine.changerAbscisse(x);
+	   	this.origine.changerOrdonnee(y);
+    }
 	
 	public int abscisse() {
         return abscisseLaPlusAGauche();
-	}
-
-	public void seDeplacerVersLaGauche() {
-		this.origine.changerAbscisse(this.origine.abscisse()-1);
-	}
-
-	public void positionner(int x, int y) {
-		this.origine.changerAbscisse(x);
-		this.origine.changerOrdonnee(y);
 	}
 	
 }
