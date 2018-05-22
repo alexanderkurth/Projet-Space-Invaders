@@ -14,10 +14,14 @@ public class Vaisseau {
     }
 
     public Vaisseau(Dimension dimension, Position positionOrigine) {
-	    this.dimension = dimension;
-	    this.origine = positionOrigine;
-	    this.vitesse = 1;
+	    this(dimension, positionOrigine, 1);
     }
+    
+    public Vaisseau(Dimension dimension, Position positionOrigine, int vitesse) {
+		this.dimension = dimension;
+		this.origine = positionOrigine;
+		this.vitesse = vitesse;
+	}
 
     public boolean occupeLaPosition(int x, int y) {
     	return estAbscisseCouverte(x) && estOrdonneeCouverte(y);
@@ -35,7 +39,7 @@ public class Vaisseau {
 	    return this.origine.ordonnee() - this.dimension.hauteur() + 1;
     }
 
-    private int ordonneeLaPlusHaute() {
+    public int ordonneeLaPlusHaute() {
     	return this.origine.ordonnee();
     }
 
