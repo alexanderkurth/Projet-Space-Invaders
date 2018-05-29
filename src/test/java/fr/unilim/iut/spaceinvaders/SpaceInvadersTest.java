@@ -18,8 +18,6 @@ public class SpaceInvadersTest {
     public void initialisation() {
 	    spaceinvaders = new SpaceInvaders(15, 10);
     }
-	
-    //TP1
     
 	@Test
 	public void test_AuDebut_JeuSpaceInvaderEstVide() {
@@ -84,8 +82,6 @@ public class SpaceInvadersTest {
 			
 	}
 	
-	//TP2
-	
 	@Test
 	public void test_unNouveauVaisseauAvecDimensionEstCorrectementPositionneDansEspaceJeu() {
 		spaceinvaders.positionnerUnNouveauVaisseau(new Dimension(3,2),new Position(7,9), 1);
@@ -119,8 +115,6 @@ public class SpaceInvadersTest {
 		}
 			
 	}
-	
-	//TP3
 	
 	@Test
 	public void test_VaisseauAvance_DeplacerVaisseauVersLaDroite() {
