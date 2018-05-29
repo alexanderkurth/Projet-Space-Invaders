@@ -299,5 +299,23 @@ public class SpaceInvadersTest {
 		".....VVVVVVV...\n" + 
 		".....VVVVVVV...\n" , spaceinvaders.recupererEspaceJeuDansChaineASCII());
 	}
+	
+	@Test
+	public void test_unNouveauEnvahisseurEstCorrectementPositionneDansEspaceJeu() {
+		spaceinvaders.positionnerUnNouveauVaisseau(new Dimension(7,2),new Position(5,9), 1);
+		spaceinvaders.positionnerUnNouveauEnvahisseur(new Dimension(3,2),new Position(10,1), 1);
+		
+		assertEquals("" + 
+		"..........EEE..\n" + 
+		"..........EEE..\n" +
+		"...............\n" + 
+		"...............\n" + 
+		"...............\n" + 
+		"...............\n" + 
+		"...............\n" + 
+		"...............\n" + 
+		".....VVVVVVV...\n" + 
+		".....VVVVVVV...\n" , spaceinvaders.recupererEspaceJeuDansChaineASCII());
+	}
 
 }
