@@ -18,18 +18,18 @@ public abstract class Sprite {
 	}
 
 	private boolean estOrdonneeCouverte(int y) {
-		return (ordonneeLaPlusBasse() <= y) && (y <= ordonneeLaPlusHaute());
+		return (ordonneeLaPlusHaute() <= y) && (y <= ordonneeLaPlusBasse());
 	}
 
 	private boolean estAbscisseCouverte(int x) {
 		return (abscisseLaPlusAGauche() <= x) && (x <= abscisseLaPlusADroite());
 	}
 
-	public int ordonneeLaPlusBasse() {
+	public int ordonneeLaPlusHaute() {
 	    return this.origine.ordonnee() - this.dimension.hauteur() + 1;
 	}
 
-	public int ordonneeLaPlusHaute() {
+	public int ordonneeLaPlusBasse() {
 		return this.origine.ordonnee();
 	}
 
