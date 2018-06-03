@@ -163,6 +163,20 @@ public class SpaceInvaders implements Jeu {
 	}
 
 	public void positionnerUnNouveauEnvahisseur(Dimension dimension, Position position, int vitesse) {
+		int x = position.abscisse();
+		int y = position.ordonnee();
+		
+		if (!estDansEspaceJeu(x,y))
+			throw new HorsEspaceJeuException("La position de l'envahisseur est en dehors de l'espace jeu");
+		
+		int longueurEnvahisseur = dimension.longueur();
+		int hauteurEnvahisseur = dimension.hauteur();
+		
+		if (!estDansEspaceJeu(x + longueurEnvahisseur - 1, y))
+			throw new DebordementEspaceJeuException("L'envahisseur déborde de l'espace jeu vers la droite à cause de sa longueur");
+		if (!estDansEspaceJeu(x, y - hauteurEnvahisseur + 1))
+			throw new DebordementEspaceJeuException("L'envahisseur déborde de l'espace jeu vers le bas à cause de sa hauteur");
+		
 		envahisseur = new Envahisseur(dimension, position, vitesse);
 	}
 
