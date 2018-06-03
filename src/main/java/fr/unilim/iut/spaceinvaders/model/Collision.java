@@ -11,25 +11,36 @@ public class Collision {
 	}
 
 	public void detecterCollision(SpaceInvaders spaceInvaders) {
-		if (toucheEnAbscisse()) {
+		if (touche()) {
 			spaceInvaders.supprimerMissile();
 			spaceInvaders.supprimerEnvahisseur();
 		}
 		
-		if (deuxiemeSprite.abscisseLaPlusAGauche() == premierSprite.abscisseLaPlusADroite()
-				&& deuxiemeSprite.ordonneeLaPlusHaute() <= premierSprite.ordonneeLaPlusBasse()
-				&& deuxiemeSprite.ordonneeLaPlusHaute() >= premierSprite.ordonneeLaPlusHaute()) {
-			spaceInvaders.supprimerMissile();
-			spaceInvaders.supprimerEnvahisseur();
-		}
-		
-		if (deuxiemeSprite.abscisseLaPlusAGauche() == premierSprite.abscisseLaPlusADroite()
-				&& deuxiemeSprite.ordonneeLaPlusBasse() <= premierSprite.ordonneeLaPlusBasse()
-				&& deuxiemeSprite.ordonneeLaPlusBasse() >= premierSprite.ordonneeLaPlusHaute()) {
-			spaceInvaders.supprimerMissile();
-			spaceInvaders.supprimerEnvahisseur();
-		}
-		
+	}
+
+	private boolean touche() {
+		return toucheEnAbscisse() || toucheEnOrdonneeAGauche() || toucheEnOrdonneADroite();
+	}
+
+	private boolean toucheEnOrdonneADroite() {
+		return memeAbscisseToucheADroite() && ordonneeLaPlusHauteTouche() || memeAbscisseToucheADroite() && ordonneeLaPlusBasseTouche();
+	}
+
+	private boolean toucheEnOrdonneeAGauche() {
+		return memeAbscisseToucheAGauche() && ordonneeLaPlusHauteTouche() || memeAbscisseToucheAGauche() && ordonneeLaPlusBasseTouche();
+	}
+
+	private boolean ordonneeLaPlusBasseTouche() {
+		return deuxiemeSprite.ordonneeLaPlusBasse() <= premierSprite.ordonneeLaPlusBasse()
+				&& deuxiemeSprite.ordonneeLaPlusBasse() >= premierSprite.ordonneeLaPlusHaute();
+	}
+
+	private boolean memeAbscisseToucheADroite() {
+		return deuxiemeSprite.abscisseLaPlusADroite() == premierSprite.abscisseLaPlusAGauche();
+	}
+
+	private boolean memeAbscisseToucheAGauche() {
+		return deuxiemeSprite.abscisseLaPlusAGauche() == premierSprite.abscisseLaPlusADroite();
 	}
 
 	private boolean toucheEnAbscisse() {
@@ -39,13 +50,22 @@ public class Collision {
 	private boolean abscisseLaPlusADroiteTouche() {
 		return deuxiemeSprite.abscisseLaPlusADroite() >= premierSprite.abscisseLaPlusAGauche() 
 				&& deuxiemeSprite.abscisseLaPlusADroite() <= premierSprite.abscisseLaPlusADroite()
-				&& deuxiemeSprite.ordonneeLaPlusHaute() == premierSprite.ordonneeLaPlusBasse();
+				&& memeOrdonnee();
 	}
 
 	private boolean abscisseLaPlusAGaucheTouche() {
 		return deuxiemeSprite.abscisseLaPlusAGauche() >= premierSprite.abscisseLaPlusAGauche() 
 				&& deuxiemeSprite.abscisseLaPlusAGauche() <= premierSprite.abscisseLaPlusADroite()
-				&& deuxiemeSprite.ordonneeLaPlusHaute() == premierSprite.ordonneeLaPlusBasse();
+				&& memeOrdonnee();
+	}
+	
+	private boolean memeOrdonnee() {
+		return deuxiemeSprite.ordonneeLaPlusHaute() == premierSprite.ordonneeLaPlusBasse();
+	}
+	
+	private boolean ordonneeLaPlusHauteTouche() {
+		return deuxiemeSprite.ordonneeLaPlusHaute() <= premierSprite.ordonneeLaPlusBasse()
+				&& deuxiemeSprite.ordonneeLaPlusHaute() >= premierSprite.ordonneeLaPlusHaute();
 	}
 
 }
