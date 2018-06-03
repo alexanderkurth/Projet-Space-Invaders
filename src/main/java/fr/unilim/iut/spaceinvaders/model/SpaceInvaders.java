@@ -180,4 +180,20 @@ public class SpaceInvaders implements Jeu {
 		envahisseur = new Envahisseur(dimension, position, vitesse);
 	}
 
+	public void deplacerEnvahisseurVersLaGauche() {
+		if (0 < envahisseur.abscisseLaPlusAGauche())
+			envahisseur.deplacerHorizontalementVers(Direction.GAUCHE);	
+		if (!estDansEspaceJeu(envahisseur.abscisseLaPlusAGauche(), envahisseur.ordonneeLaPlusBasse())) 
+			envahisseur.positionner(0, envahisseur.ordonneeLaPlusBasse());
+	}
+
+	public void deplacerEnvahisseurVersLaDroite() {
+		if (envahisseur.abscisseLaPlusADroite() < (longueur - 1)) {
+			envahisseur.deplacerHorizontalementVers(Direction.DROITE);	
+			if (!estDansEspaceJeu(envahisseur.abscisseLaPlusADroite(), envahisseur.ordonneeLaPlusBasse())) {
+				envahisseur.positionner(longueur - envahisseur.longueur(), envahisseur.ordonneeLaPlusBasse());
+			}
+		}
+	}
+
 }
