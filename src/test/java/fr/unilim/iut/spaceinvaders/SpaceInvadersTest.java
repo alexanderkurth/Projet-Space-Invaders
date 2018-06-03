@@ -497,12 +497,12 @@ public class SpaceInvadersTest {
 	}
 	
 	@Test
-	public void collisionTest_AbscisseLaPlusAGaucheMissileToucheEnvahisseurEnAbscisse() {
+	public void collisionTest_CoinSuperieurDroitMissileToucheEnvahisseur() {
 		spaceinvaders.positionnerUnNouveauVaisseau(new Dimension(7,2),new Position(5,9), 2);
-		spaceinvaders.positionnerUnNouveauEnvahisseur(new Dimension(3,2), new Position(6,1), 3);
-		spaceinvaders.tirerUnMissile(new Dimension(3,2),1);
+		spaceinvaders.positionnerUnNouveauEnvahisseur(new Dimension(3,3), new Position(8,4), 3);
+		spaceinvaders.tirerUnMissile(new Dimension(3,3),1);
 		
-		for (int i = 1; i<=5; i++) {
+		for (int i = 1; i<=2; i++) {
 			spaceinvaders.deplacerMissile();
 		}
 		
@@ -522,12 +522,12 @@ public class SpaceInvadersTest {
 	}
 	
 	@Test
-	public void collisionTest_AbscisseLaPlusADroiteMissileToucheEnvahisseurEnAbscisse() {
+	public void collisionTest_CoinSuperieurGaucheMissileToucheEnvahisseur() {
 		spaceinvaders.positionnerUnNouveauVaisseau(new Dimension(7,2),new Position(5,9), 2);
-		spaceinvaders.positionnerUnNouveauEnvahisseur(new Dimension(3,2), new Position(8,1), 3);
-		spaceinvaders.tirerUnMissile(new Dimension(3,2),1);
+		spaceinvaders.positionnerUnNouveauEnvahisseur(new Dimension(3,3), new Position(6,4), 3);
+		spaceinvaders.tirerUnMissile(new Dimension(3,3),1);
 		
-		for (int i = 1; i<=5; i++) {
+		for (int i = 1; i<=2; i++) {
 			spaceinvaders.deplacerMissile();
 		}
 		
@@ -547,9 +547,9 @@ public class SpaceInvadersTest {
 	}
 	
 	@Test
-	public void collisionTest_OrdonneLaPlusHauteMissileToucheEnvahisseurEnOrdonneeADroite() {
+	public void collisionTest_CoinInferieurDroitMissileToucheEnvahisseur() {
 		spaceinvaders.positionnerUnNouveauVaisseau(new Dimension(7,2),new Position(5,9), 2);
-		spaceinvaders.positionnerUnNouveauEnvahisseur(new Dimension(3,3), new Position(5,2), 3);
+		spaceinvaders.positionnerUnNouveauEnvahisseur(new Dimension(3,3), new Position(8,4), 3);
 		spaceinvaders.tirerUnMissile(new Dimension(3,3),1);
 		
 		for (int i = 1; i<=4; i++) {
@@ -572,62 +572,12 @@ public class SpaceInvadersTest {
 	}
 	
 	@Test
-	public void collisionTest_OrdonneLaPlusBasseMissileToucheEnvahisseurEnOrdonneeADroite() {
+	public void collisionTest_CoinInferieurGaucheMissileToucheEnvahisseur() {
 		spaceinvaders.positionnerUnNouveauVaisseau(new Dimension(7,2),new Position(5,9), 2);
-		spaceinvaders.positionnerUnNouveauEnvahisseur(new Dimension(3,2), new Position(5,2), 3);
-		spaceinvaders.tirerUnMissile(new Dimension(3,2),1);
-		
-		for (int i = 1; i<=6; i++) {
-			spaceinvaders.deplacerMissile();
-		}
-		
-		spaceinvaders.detecterCollision(spaceinvaders.recupererEnvahisseur(), spaceinvaders.recupererMissile());
-		
-		assertEquals("" + 
-		"...............\n" + 
-		"...............\n" +
-		"...............\n" + 
-		"...............\n" + 
-		"...............\n" + 
-		"...............\n" + 
-		"...............\n" + 
-		"...............\n" + 
-		".....VVVVVVV...\n" + 
-		".....VVVVVVV...\n" , spaceinvaders.recupererEspaceJeuDansChaineASCII());
-	}
-	
-	@Test
-	public void collisionTest_OrdonneLaPlusHauteMissileToucheEnvahisseurEnOrdonneeAGauche() {
-		spaceinvaders.positionnerUnNouveauVaisseau(new Dimension(7,2),new Position(5,9), 2);
-		spaceinvaders.positionnerUnNouveauEnvahisseur(new Dimension(3,3), new Position(9,2), 3);
+		spaceinvaders.positionnerUnNouveauEnvahisseur(new Dimension(3,3), new Position(6,4), 3);
 		spaceinvaders.tirerUnMissile(new Dimension(3,3),1);
 		
 		for (int i = 1; i<=4; i++) {
-			spaceinvaders.deplacerMissile();
-		}
-		
-		spaceinvaders.detecterCollision(spaceinvaders.recupererEnvahisseur(), spaceinvaders.recupererMissile());
-		
-		assertEquals("" + 
-		"...............\n" + 
-		"...............\n" +
-		"...............\n" + 
-		"...............\n" + 
-		"...............\n" + 
-		"...............\n" + 
-		"...............\n" + 
-		"...............\n" + 
-		".....VVVVVVV...\n" + 
-		".....VVVVVVV...\n" , spaceinvaders.recupererEspaceJeuDansChaineASCII());
-	}
-	
-	@Test
-	public void collisionTest_OrdonneLaPlusBasseMissileToucheEnvahisseurEnOrdonneeAGauche() {
-		spaceinvaders.positionnerUnNouveauVaisseau(new Dimension(7,2),new Position(5,9), 2);
-		spaceinvaders.positionnerUnNouveauEnvahisseur(new Dimension(3,2), new Position(9,2), 3);
-		spaceinvaders.tirerUnMissile(new Dimension(3,2),1);
-		
-		for (int i = 1; i<=6; i++) {
 			spaceinvaders.deplacerMissile();
 		}
 		
