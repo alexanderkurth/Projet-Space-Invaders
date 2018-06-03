@@ -389,17 +389,17 @@ public class SpaceInvadersTest {
 		spaceinvaders.deplacerEnvahisseurVersLaGauche();
 		
 		assertEquals("" + 
-				".......EEE.....\n" + 
-				".......EEE.....\n" +
-				"...............\n" + 
-				"...............\n" + 
-				"...............\n" + 
-				"...............\n" + 
-				"...............\n" + 
-				"...............\n" + 
-				"...............\n" + 
-				"...............\n" , spaceinvaders.recupererEspaceJeuDansChaineASCII());
-			}
+		".......EEE.....\n" + 
+		".......EEE.....\n" +
+		"...............\n" + 
+		"...............\n" + 
+		"...............\n" + 
+		"...............\n" + 
+		"...............\n" + 
+		"...............\n" + 
+		"...............\n" + 
+		"...............\n" , spaceinvaders.recupererEspaceJeuDansChaineASCII());
+	}
 	
 	@Test
 	public void test_EnvahisseurAvance_DeplacerEnvahisseurVersLaDroite() {
@@ -408,17 +408,17 @@ public class SpaceInvadersTest {
 		spaceinvaders.deplacerEnvahisseurVersLaDroite();
 		
 		assertEquals("" + 
-				"...........EEE.\n" + 
-				"...........EEE.\n" +
-				"...............\n" + 
-				"...............\n" + 
-				"...............\n" + 
-				"...............\n" + 
-				"...............\n" + 
-				"...............\n" + 
-				"...............\n" + 
-				"...............\n" , spaceinvaders.recupererEspaceJeuDansChaineASCII());
-			}
+		"...........EEE.\n" + 
+		"...........EEE.\n" +
+		"...............\n" + 
+		"...............\n" + 
+		"...............\n" + 
+		"...............\n" + 
+		"...............\n" + 
+		"...............\n" + 
+		"...............\n" + 
+		"...............\n" , spaceinvaders.recupererEspaceJeuDansChaineASCII());
+	}
 	
 	@Test
 	public void test_EnvahisseurImmobile_DeplacerEnvahisseurVersLaGauche() {

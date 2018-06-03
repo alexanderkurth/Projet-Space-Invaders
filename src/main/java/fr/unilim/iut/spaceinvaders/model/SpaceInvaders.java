@@ -46,7 +46,7 @@ public class SpaceInvaders implements Jeu {
 		return this.aUnEnvahisseur() && envahisseur.occupeLaPosition(x, y);
 	}
 
-	private boolean aUnEnvahisseur() {
+	public boolean aUnEnvahisseur() {
 		return this.envahisseur != null;
 	}
 
@@ -107,7 +107,7 @@ public class SpaceInvaders implements Jeu {
 
 	@Override
     public void evoluer(Commande commandeUser) {
-		
+				
 		if (commandeUser.gauche) {
 			deplacerVaisseauVersLaGauche();
 		}
@@ -122,6 +122,21 @@ public class SpaceInvaders implements Jeu {
 		
 		if (this.aUnMissile()) {
 			deplacerMissile();
+		}
+		
+		if (this.aUnEnvahisseur() && envahisseur.abscisseLaPlusADroite() < this.longueur-1 && envahisseur.doitSeDeplacerVersLaDroite()) {
+			deplacerEnvahisseurVersLaDroite();
+			
+			if (envahisseur.abscisseLaPlusADroite() == this.longueur-1)
+				envahisseur.vaSeDeplacerVersLaGauche();
+				
+		}
+		
+		if (this.aUnEnvahisseur() && envahisseur.abscisseLaPlusAGauche() != 0 && !envahisseur.doitSeDeplacerVersLaDroite()) {
+			deplacerEnvahisseurVersLaGauche();
+			
+			if (envahisseur.abscisseLaPlusAGauche() == 0)
+				envahisseur.vaSeDeplacerVersLaDroite();
 		}
 	}
 
@@ -138,6 +153,10 @@ public class SpaceInvaders implements Jeu {
 	    Position positionVaisseau = new Position(this.longueur/2,this.hauteur-1);
 	    Dimension dimensionVaisseau = new Dimension(Constante.VAISSEAU_LONGUEUR, Constante.VAISSEAU_HAUTEUR);
 	    positionnerUnNouveauVaisseau(dimensionVaisseau, positionVaisseau, Constante.VAISSEAU_VITESSE);
+	    
+	    Position positionEnvahisseur = new Position(this.longueur/2,this.hauteur-(this.hauteur-Constante.ENVAHISSEUR_HAUTEUR));
+	    Dimension dimensionEnvahisseur = new Dimension(Constante.ENVAHISSEUR_LONGUEUR, Constante.ENVAHISSEUR_HAUTEUR);
+	    positionnerUnNouveauEnvahisseur(dimensionEnvahisseur, positionEnvahisseur, Constante.ENVAHISSEUR_VITESSE);
     }
 
 	public void tirerUnMissile(Dimension dimensionMissile, int vitesseMissile) {
@@ -194,6 +213,10 @@ public class SpaceInvaders implements Jeu {
 				envahisseur.positionner(longueur - envahisseur.longueur(), envahisseur.ordonneeLaPlusBasse());
 			}
 		}
+	}
+
+	public Envahisseur recupererEnvahisseur() {
+		return this.envahisseur;
 	}
 
 }

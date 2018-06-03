@@ -9,6 +9,10 @@ public class Constante {
     public static final int VAISSEAU_HAUTEUR = 20;
     public static final int VAISSEAU_VITESSE = 5;
     
+    public static final int ENVAHISSEUR_LONGUEUR = 20;
+    public static final int ENVAHISSEUR_HAUTEUR = 10;
+    public static final int ENVAHISSEUR_VITESSE = 3;
+    
 	public static final char MARQUE_FIN_LIGNE = '\n';
 	public static final char MARQUE_VIDE = '.';
 	public static final char MARQUE_VAISSEAU = 'V';
