@@ -126,6 +126,10 @@ public class SpaceInvaders implements Jeu {
 		}
 		
 		deplacementAutomatiqueEnvahisseur();
+		
+		if (this.aUnMissile() && this.aUnEnvahisseur()) {
+			detecterCollision(this.envahisseur, this.missile);
+		}
 	}
 
 	private void deplacementAutomatiqueEnvahisseur() {
