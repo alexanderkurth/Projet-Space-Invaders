@@ -2,18 +2,49 @@ package fr.unilim.iut.spaceinvaders.model;
 
 public class Collision {
 
-	private Missile missile;
-	private Envahisseur envahisseur;
+	private Sprite premierSprite;
+	private Sprite deuxiemeSprite;
+	private boolean collisionTrouvee;
+	private int abscisseTesteePremierSprite;
 	
-	public Collision(Envahisseur envahisseur, Missile missile) {
-		this.missile = missile;
-		this.envahisseur = envahisseur;
+	public Collision(Sprite premierSprite, Sprite deuxiemeSprite) {
+		this.premierSprite = premierSprite;
+		this.deuxiemeSprite = deuxiemeSprite;
+		this.collisionTrouvee = false;
+		this.abscisseTesteePremierSprite = premierSprite.abscisseLaPlusAGauche();
 	}
 
 	public void detecterCollision(SpaceInvaders spaceInvaders) {
-		if (missile.abscisseLaPlusAGauche() == envahisseur.abscisseLaPlusAGauche()) {
-			spaceInvaders.supprimerMissile();
-			spaceInvaders.supprimerEnvahisseur();
+		
+		while (!collisionTrouvee && toutesLesAbcissesNeSontPasTestees(abscisseTesteePremierSprite)) {
+			if (lesSpriteSeTouchent(abscisseTesteePremierSprite)) {
+				spaceInvaders.supprimerMissile();
+				spaceInvaders.supprimerEnvahisseur();
+				
+				collisionTrouvee = true;
+			}
+
+			onTesteLAbscisseSuivante();
 		}
+	}
+
+	private int onTesteLAbscisseSuivante() {
+		return abscisseTesteePremierSprite++;
+	}
+
+	private boolean toutesLesAbcissesNeSontPasTestees(int abscisseTesteePremierSprite) {
+		return abscisseTesteePremierSprite <= deuxiemeSprite.abscisseLaPlusADroite();
+	}
+
+	private boolean lesSpriteSeTouchent(int abscisseTesteePremierSprite) {
+		return abscisseLaPlusAGaucheTouche(abscisseTesteePremierSprite) || abscisseLaPlusADroiteTouche(abscisseTesteePremierSprite);
+	}
+
+	private boolean abscisseLaPlusADroiteTouche(int abscisseTesteePremierSprite) {
+		return abscisseTesteePremierSprite == deuxiemeSprite.abscisseLaPlusADroite() && premierSprite.ordonneeLaPlusBasse() == deuxiemeSprite.ordonneeLaPlusHaute();
+	}
+
+	private boolean abscisseLaPlusAGaucheTouche(int abscisseTesteePremierSprite) {
+		return abscisseTesteePremierSprite == deuxiemeSprite.abscisseLaPlusAGauche() && premierSprite.ordonneeLaPlusBasse() == deuxiemeSprite.ordonneeLaPlusHaute();
 	}
 }

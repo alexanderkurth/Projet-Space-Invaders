@@ -239,8 +239,8 @@ public class SpaceInvaders implements Jeu {
 		return this.envahisseur;
 	}
 
-	public void detecterCollision(Envahisseur envahisseur, Missile missile) {
-		collision = new Collision (envahisseur, missile);
+	public void detecterCollision(Sprite premierSprite, Sprite deuxiemeSprite) {
+		collision = new Collision (premierSprite, deuxiemeSprite);
 		
 		collision.detecterCollision(this);
 	}

@@ -520,4 +520,54 @@ public class SpaceInvadersTest {
 		".....VVVVVVV...\n" + 
 		".....VVVVVVV...\n" , spaceinvaders.recupererEspaceJeuDansChaineASCII());
 	}
+	
+	@Test
+	public void collisionTest_AbscisseLaPlusAGaucheMissileToucheEnvahisseur() {
+		spaceinvaders.positionnerUnNouveauVaisseau(new Dimension(7,2),new Position(5,9), 2);
+		spaceinvaders.positionnerUnNouveauEnvahisseur(new Dimension(3,2), new Position(6,1), 3);
+		spaceinvaders.tirerUnMissile(new Dimension(3,2),1);
+		
+		for (int i = 1; i<=5; i++) {
+			spaceinvaders.deplacerMissile();
+		}
+		
+		spaceinvaders.detecterCollision(spaceinvaders.recupererEnvahisseur(), spaceinvaders.recupererMissile());
+		
+		assertEquals("" + 
+		"...............\n" + 
+		"...............\n" +
+		"...............\n" + 
+		"...............\n" + 
+		"...............\n" + 
+		"...............\n" + 
+		"...............\n" + 
+		"...............\n" + 
+		".....VVVVVVV...\n" + 
+		".....VVVVVVV...\n" , spaceinvaders.recupererEspaceJeuDansChaineASCII());
+	}
+	
+	@Test
+	public void collisionTest_AbscisseLaPlusADroiteMissileToucheEnvahisseur() {
+		spaceinvaders.positionnerUnNouveauVaisseau(new Dimension(7,2),new Position(5,9), 2);
+		spaceinvaders.positionnerUnNouveauEnvahisseur(new Dimension(3,2), new Position(8,1), 3);
+		spaceinvaders.tirerUnMissile(new Dimension(3,2),1);
+		
+		for (int i = 1; i<=5; i++) {
+			spaceinvaders.deplacerMissile();
+		}
+		
+		spaceinvaders.detecterCollision(spaceinvaders.recupererEnvahisseur(), spaceinvaders.recupererMissile());
+		
+		assertEquals("" + 
+		"...............\n" + 
+		"...............\n" +
+		"...............\n" + 
+		"...............\n" + 
+		"...............\n" + 
+		"...............\n" + 
+		"...............\n" + 
+		"...............\n" + 
+		".....VVVVVVV...\n" + 
+		".....VVVVVVV...\n" , spaceinvaders.recupererEspaceJeuDansChaineASCII());
+	}
 }
