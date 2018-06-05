@@ -10,30 +10,27 @@ public class Collision {
 		this.deuxiemeSprite = deuxiemeSprite;
 	}
 
-	public void detecterCollision(SpaceInvaders spaceInvaders) {
-		if (touche()) {
-			spaceInvaders.supprimerMissile();
-			spaceInvaders.supprimerEnvahisseur();
-		}
+	public boolean detecterCollision(SpaceInvaders spaceInvaders) {
+		return deuxiemeSpriteTouchePremierSprite();
 	}
 
-	private boolean touche() {
-		return coinSuperieurGaucheTouche() || coinInferieurGaucheTouche() || coinInferieurDroitTouche() || coinSuperieurDroitTouche();
+	private boolean deuxiemeSpriteTouchePremierSprite() {
+		return coinSuperieurGaucheDeuxiemeSpriteTouchePremierSprite() || coinInferieurGaucheDeuxiemeSpriteTouchePremierSprite() || coinInferieurDroitDeuxiemeSpriteTouchePremierSprite() || coinSuperieurDroitDeuxiemeSpriteTouchePremierSprite();
 	}
 
-	private boolean coinSuperieurDroitTouche() {
+	private boolean coinSuperieurDroitDeuxiemeSpriteTouchePremierSprite() {
 		return abscisseLaPlusADroiteTouche() && ordonneeLaPlusHauteTouche();
 	}
 
-	private boolean coinInferieurDroitTouche() {
+	private boolean coinInferieurDroitDeuxiemeSpriteTouchePremierSprite() {
 		return abscisseLaPlusADroiteTouche() && ordonneeLaPlusBasseTouche();
 	}
 
-	private boolean coinInferieurGaucheTouche() {
+	private boolean coinInferieurGaucheDeuxiemeSpriteTouchePremierSprite() {
 		return abscisseLaPlusAGaucheTouche() && ordonneeLaPlusBasseTouche();
 	}
 
-	private boolean coinSuperieurGaucheTouche() {
+	private boolean coinSuperieurGaucheDeuxiemeSpriteTouchePremierSprite() {
 		return abscisseLaPlusAGaucheTouche() && ordonneeLaPlusHauteTouche();
 	}
 

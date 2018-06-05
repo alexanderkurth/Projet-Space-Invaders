@@ -127,8 +127,9 @@ public class SpaceInvaders implements Jeu {
 		
 		deplacementAutomatiqueEnvahisseur();
 		
-		if (this.aUnMissile() && this.aUnEnvahisseur()) {
-			detecterCollision(this.envahisseur, this.missile);
+		if (this.aUnMissile() && this.aUnEnvahisseur() && collisionDetectee(this.envahisseur, this.missile)) {
+			supprimerMissile();
+			supprimerEnvahisseur();
 		}
 	}
 
@@ -194,11 +195,11 @@ public class SpaceInvaders implements Jeu {
 	public void deplacerMissile() {
 		this.missile.deplacerVerticalementVers(Direction.HAUT_ECRAN);
 		
-		if (missileColleEnHautDeLEcran())
+		if (missileSortDeLEcran())
 			supprimerMissile();
 	}
 
-	private boolean missileColleEnHautDeLEcran() {
+	private boolean missileSortDeLEcran() {
 		return this.missile.ordonneeLaPlusHaute() < 0;
 	}
 
@@ -243,10 +244,10 @@ public class SpaceInvaders implements Jeu {
 		return this.envahisseur;
 	}
 
-	public void detecterCollision(Sprite premierSprite, Sprite deuxiemeSprite) {
+	public boolean collisionDetectee(Sprite premierSprite, Sprite deuxiemeSprite) {
 		collision = new Collision (premierSprite, deuxiemeSprite);
 		
-		collision.detecterCollision(this);
+		return collision.detecterCollision(this);
 	}
 
 	public void supprimerEnvahisseur() {
