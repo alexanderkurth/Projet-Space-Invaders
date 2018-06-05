@@ -14,11 +14,7 @@ public class Envahisseur extends Sprite {
 		return this.doitSeDeplacerVersLaDroite;
 	}
 
-	public void vaSeDeplacerVersLaGauche() {
-		this.doitSeDeplacerVersLaDroite = false;
-	}
-
-	public void vaSeDeplacerVersLaDroite() {
-		this.doitSeDeplacerVersLaDroite = true;
+	public void changementDeDirection() {
+		this.doitSeDeplacerVersLaDroite = !this.doitSeDeplacerVersLaDroite;
 	}
 }

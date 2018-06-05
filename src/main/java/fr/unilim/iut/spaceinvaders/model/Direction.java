@@ -18,6 +18,6 @@ public enum Direction {
 
     public int valeur() {
 	  return this.valeur;
- }
+    }
 
 }
