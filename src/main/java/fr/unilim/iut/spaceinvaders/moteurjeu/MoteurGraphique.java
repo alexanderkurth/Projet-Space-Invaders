@@ -46,7 +46,7 @@ public class MoteurGraphique {
 		Controleur controle = this.gui.getControleur();
 
 		// boucle de jeu
-		while (!this.jeu.etreFini()) {
+		while (!this.jeu.estFini()) {
 			// demande controle utilisateur
 			Commande c = controle.getCommande();
 			// fait evoluer le jeu

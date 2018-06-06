@@ -15,7 +15,8 @@ public class Collision {
 	}
 
 	private boolean deuxiemeSpriteTouchePremierSprite() {
-		return coinSuperieurGaucheDeuxiemeSpriteTouchePremierSprite() || coinInferieurGaucheDeuxiemeSpriteTouchePremierSprite() || coinInferieurDroitDeuxiemeSpriteTouchePremierSprite() || coinSuperieurDroitDeuxiemeSpriteTouchePremierSprite();
+		return coinSuperieurGaucheDeuxiemeSpriteTouchePremierSprite() || coinInferieurGaucheDeuxiemeSpriteTouchePremierSprite() 
+				|| coinInferieurDroitDeuxiemeSpriteTouchePremierSprite() || coinSuperieurDroitDeuxiemeSpriteTouchePremierSprite();
 	}
 
 	private boolean coinSuperieurDroitDeuxiemeSpriteTouchePremierSprite() {

@@ -19,5 +19,5 @@ public interface Jeu {
 	/**
 	 * @return true si et seulement si le jeu est fini
 	 */
-	public boolean etreFini();
+	public boolean estFini();
 }

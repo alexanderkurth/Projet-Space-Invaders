@@ -9,7 +9,7 @@ public class Vaisseau extends Sprite {
 	}
 
 	public Missile tirerUnMissile(Dimension dimensionMissile, int vitesseMissile) {
-		if (dimensionMissile.longueur > this.longueur())
+		if (longueurMissileSuperieureLongueurVaisseau(dimensionMissile))
 			throw new MissileException("La longueur du missile est supérieure à celle du vaisseau");
 		
 		Position positionOrigineMissile = calculerLaPositionDeTirDuMissile(dimensionMissile);
@@ -24,5 +24,8 @@ public class Vaisseau extends Sprite {
 		Position positionOrigineMissile = new Position(abscisseOrigineMissile, ordonneeeOrigineMissile);
 		return positionOrigineMissile;
 	}
-	
+
+	private boolean longueurMissileSuperieureLongueurVaisseau(Dimension dimensionMissile) {
+		return dimensionMissile.longueur > this.longueur();
+	}
 }
