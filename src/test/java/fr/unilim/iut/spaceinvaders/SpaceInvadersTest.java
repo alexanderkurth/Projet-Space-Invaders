@@ -548,4 +548,24 @@ public class SpaceInvadersTest {
 		assertEquals(true, spaceinvaders.collisionDetectee(spaceinvaders.recupererEnvahisseur(), spaceinvaders.recupererMissile()));
 	}
 	
+	@Test
+	public void test_MissileToucheEnvahisseurSansLesCoinsPremierCas() {
+		spaceinvaders.positionnerUnNouveauVaisseau(new Dimension(7,2),new Position(5,9), 2);
+		spaceinvaders.positionnerUnNouveauEnvahisseur(new Dimension(5,1), new Position(6,6), 3);
+		spaceinvaders.tirerUnMissile(new Dimension(3,3),1);
+		
+		assertEquals(true, spaceinvaders.collisionDetectee(spaceinvaders.recupererEnvahisseur(), spaceinvaders.recupererMissile()));
+	}
+	
+	@Test
+	public void test_MissileToucheEnvahisseurSansLesCoinsDeuxiemeCas() {
+		spaceinvaders.positionnerUnNouveauVaisseau(new Dimension(7,2),new Position(5,9), 2);
+		spaceinvaders.positionnerUnNouveauEnvahisseur(new Dimension(3,3), new Position(7,7), 3);
+		spaceinvaders.tirerUnMissile(new Dimension(5,2),1);
+		
+		spaceinvaders.deplacerMissile();
+		
+		assertEquals(true, spaceinvaders.collisionDetectee(spaceinvaders.recupererEnvahisseur(), spaceinvaders.recupererMissile()));
+	}
+	
 }
