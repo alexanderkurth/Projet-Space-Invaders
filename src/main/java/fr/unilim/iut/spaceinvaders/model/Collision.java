@@ -16,7 +16,8 @@ public class Collision {
 
 	private boolean deuxiemeSpriteTouchePremierSprite() {
 		return coinSuperieurGaucheDeuxiemeSpriteTouchePremierSprite() || coinInferieurGaucheDeuxiemeSpriteTouchePremierSprite() 
-				|| coinInferieurDroitDeuxiemeSpriteTouchePremierSprite() || coinSuperieurDroitDeuxiemeSpriteTouchePremierSprite();
+				|| coinInferieurDroitDeuxiemeSpriteTouchePremierSprite() || coinSuperieurDroitDeuxiemeSpriteTouchePremierSprite()
+				|| deuxiemeSpriteToucheSansLesCoinsPremierCasPremierSprite() || deuxiemeSpriteToucheSansLesCoinsDeuxiemeCasPremierSprite();
 	}
 
 	private boolean coinSuperieurDroitDeuxiemeSpriteTouchePremierSprite() {
@@ -33,6 +34,14 @@ public class Collision {
 
 	private boolean coinSuperieurGaucheDeuxiemeSpriteTouchePremierSprite() {
 		return abscisseLaPlusAGaucheTouche() && ordonneeLaPlusHauteTouche();
+	}
+	
+	private boolean deuxiemeSpriteToucheSansLesCoinsDeuxiemeCasPremierSprite() {
+		return deuxiemeSpriteComprisEntreLesOrdonneesDuPremier() && premierSpriteComprisEntreLesAbscissesDuDeuxieme();
+	}
+
+	private boolean deuxiemeSpriteToucheSansLesCoinsPremierCasPremierSprite() {
+		return premierSpriteComprisEntreLesOrdonneesDuDeuxieme() && deuxiemeSpriteComprisEntreLesAbscissesDuPremier();
 	}
 
 	private boolean ordonneeLaPlusBasseTouche() {
@@ -53,6 +62,26 @@ public class Collision {
 	private boolean ordonneeLaPlusHauteTouche() {
 		return deuxiemeSprite.ordonneeLaPlusHaute() <= premierSprite.ordonneeLaPlusBasse()
 				&& deuxiemeSprite.ordonneeLaPlusHaute() >= premierSprite.ordonneeLaPlusHaute();
+	}
+	
+	private boolean deuxiemeSpriteComprisEntreLesOrdonneesDuPremier() {
+		return deuxiemeSprite.ordonneeLaPlusHaute() >= premierSprite.ordonneeLaPlusHaute()
+				&& deuxiemeSprite.ordonneeLaPlusBasse() <= premierSprite.ordonneeLaPlusBasse();
+	}
+	
+	private boolean premierSpriteComprisEntreLesAbscissesDuDeuxieme() {
+		return deuxiemeSprite.abscisseLaPlusAGauche() <= premierSprite.abscisseLaPlusAGauche()
+				&& deuxiemeSprite.abscisseLaPlusADroite() >= premierSprite.abscisseLaPlusADroite();
+	}
+	
+	private boolean premierSpriteComprisEntreLesOrdonneesDuDeuxieme() {
+		return deuxiemeSprite.ordonneeLaPlusHaute() <= premierSprite.ordonneeLaPlusHaute()
+				&& deuxiemeSprite.ordonneeLaPlusBasse() >= premierSprite.ordonneeLaPlusBasse();
+	}
+	
+	private boolean deuxiemeSpriteComprisEntreLesAbscissesDuPremier() {
+		return deuxiemeSprite.abscisseLaPlusAGauche() >= premierSprite.abscisseLaPlusAGauche()
+				&& deuxiemeSprite.abscisseLaPlusADroite() <= premierSprite.abscisseLaPlusADroite();
 	}
 
 }

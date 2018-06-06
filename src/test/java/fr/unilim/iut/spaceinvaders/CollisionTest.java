@@ -50,4 +50,20 @@ public class CollisionTest {
 		assertEquals(true, spaceinvaders.collisionDetectee(spaceinvaders.recupererEnvahisseur(), spaceinvaders.recupererVaisseau()));
 	}
 	
+	@Test
+	public void test_DeuxiemeSpriteToucheSansLesCoinsPremierCasPremierSprite() {
+		spaceinvaders.positionnerUnNouveauVaisseau(new Dimension(4,2),new Position(5,5), 2);
+		spaceinvaders.positionnerUnNouveauEnvahisseur(new Dimension(2,4), new Position(6,6), 3);
+		
+		assertEquals(true, spaceinvaders.collisionDetectee(spaceinvaders.recupererVaisseau(), spaceinvaders.recupererEnvahisseur()));
+	}
+	
+	@Test
+	public void test_DeuxiemeSpriteToucheSansLesCoinsDeuxiemeCasPremierSprite() {
+		spaceinvaders.positionnerUnNouveauVaisseau(new Dimension(4,2),new Position(5,5), 2);
+		spaceinvaders.positionnerUnNouveauEnvahisseur(new Dimension(2,4), new Position(6,6), 3);
+		
+		assertEquals(true, spaceinvaders.collisionDetectee(spaceinvaders.recupererEnvahisseur(), spaceinvaders.recupererVaisseau()));
+	}
+	
 }
