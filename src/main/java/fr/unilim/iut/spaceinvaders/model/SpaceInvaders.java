@@ -253,7 +253,9 @@ public class SpaceInvaders implements Jeu {
 			deplacerMissile();
 		}
 		
-		deplacementAutomatiqueEnvahisseur();
+		if (this.aUnEnvahisseur()) {
+			deplacementAutomatiqueEnvahisseur();
+		}
 		
 		if (this.aUnMissile() && this.aUnEnvahisseur() && collisionDetectee(this.envahisseur, this.missile)) {
 			supprimerMissile();
@@ -262,11 +264,11 @@ public class SpaceInvaders implements Jeu {
 	}
 
 	private void deplacementAutomatiqueEnvahisseur() {
-		if (this.aUnEnvahisseur() && envahisseur.doitSeDeplacerVersLaDroite()) {
+		if (envahisseur.doitSeDeplacerVersLaDroite()) {
 			deplacerEnvahisseurVersLaDroite();				
 		}
 		
-		if (this.aUnEnvahisseur() && !envahisseur.doitSeDeplacerVersLaDroite()) {
+		if (!envahisseur.doitSeDeplacerVersLaDroite()) {
 			deplacerEnvahisseurVersLaGauche();
 		}
 		
